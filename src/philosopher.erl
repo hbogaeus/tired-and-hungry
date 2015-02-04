@@ -7,7 +7,7 @@
 -define(TIMEOUT_LEFT, 1000).
 -define(TIMEOUT_RIGHT, 2000).
 
--export([start/5]).
+-export([start/5, helloworld/0]).
 
 start(Hungry, Left, Right, Name, Ctrl) ->
   spawn_link(fun() -> sleeping(Hungry, Left, Right, Name, Ctrl) end).
@@ -40,5 +40,5 @@ eat(T, Left, Right) ->
 sleep(Sleepytime) ->
   timer:sleep(Sleepytime).
 
-% Bajsbomb
-% BAJSBOMS2
+helloworld() ->
+  helloworld.
