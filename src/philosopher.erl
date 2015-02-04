@@ -39,3 +39,5 @@ eat(T, Left, Right) ->
 
 sleep(Sleepytime) ->
   timer:sleep(Sleepytime).
+
+% Bajsbomb
