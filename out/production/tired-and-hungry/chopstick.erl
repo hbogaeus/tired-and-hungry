@@ -3,7 +3,7 @@
 
 -compile(debug_info).
 
--export([start/1, request/2, return/1, quit/1]).
+-export([start/1, request/3, return/1, quit/1]).
 
 start(Name) ->
   spawn_link(fun() -> available(Name) end).
@@ -27,13 +27,13 @@ gone(Name) ->
       ok
   end.
 
-request(Stick, Timeout) ->
+request(Stick, From, Timeout) ->
   Stick ! {request, self()},
   receive
     granted ->
-      ok
+      From ! {ok, self()}
   after Timeout ->
-    no
+    From ! {no, self()}
   end.
 
 return(Stick) ->

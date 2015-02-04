@@ -20,21 +20,16 @@ sleeping(Hungry, Left, Right, Name, Ctrl) ->
   io:format("~s is sleeping for ~w sec!~n", [Name, (Sleepytime / 1000)]),
   sleep(Sleepytime),
 
-  A = spawn_link(fun() -> chopstick:request(Left, ?TIMEOUT_LEFT) end),
-  B = spawn_link(fun() -> chopstick:request(Right, ?TIMEOUT_RIGHT) end),
+  Left_Request = spawn_link(fun() -> chopstick:request(Left, self(), ?TIMEOUT_LEFT) end),
+  Right_Request = spawn_link(fun() -> chopstick:request(Right, self(), ?TIMEOUT_RIGHT) end),
 
-  case {A, B} of
-    {ok, ok} ->
-      eat(?EAT_TIME, Left, Right),
-      sleeping(Hungry - 1, Left, Right, Name, Ctrl);
+  receive
     {ok, _} ->
-      chopstick:return(Left),
-      sleeping(Hungry, Left, Right, Name, Ctrl);
-    {_, ok} ->
-      chopstick:return(Right),
-      sleeping(Hungry, Left, Right, Name, Ctrl);
-    {_, _} ->
-      sleeping(Hungry, Left, Right, Name, Ctrl)
+      receive
+        {ok, _} ->
+          eat(?EAT_TIME, Left, Right),
+          sleeping(Hungry - 1, Left, Right, Name, Ctrl)
+      end
   end.
 
 eat(T, Left, Right) ->
