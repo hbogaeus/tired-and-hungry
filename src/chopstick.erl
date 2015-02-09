@@ -36,6 +36,27 @@ request(Stick, From, Timeout) ->
     From ! {no, self()}
   end.
 
+granted(Left, Right, From, Timeout) ->
+  Left_Request = spawn_link(fun() -> chopstick:request(Left, self(), Timeout) end),
+  Right_Request = spawn_link(fun() -> chopstick:request(Right, self(), Timeout) end),
+
+  receive
+    {ok, _} ->
+      receive
+        {ok, _} ->
+          From ! granted;
+        {no, Left_Request} ->
+          na;
+        {no, Right_Request} ->
+          na
+      end;
+    {no, _} ->
+      na
+  end.
+
+
+.
+
 return(Stick) ->
   Stick ! return.
 

@@ -4,8 +4,7 @@
 -define(SLEEP_BASE, 1000).
 -define(SLEEP_MAX, 10000).
 -define(EAT_TIME, 2000).
--define(TIMEOUT_LEFT, 1000).
--define(TIMEOUT_RIGHT, 2000).
+-define(TIMEOUT, 1000).
 
 -export([start/5, helloworld/0]).
 
@@ -20,25 +19,14 @@ sleeping(Hungry, Left, Right, Name, Ctrl) ->
   io:format("~s is sleeping for ~w sec!~n", [Name, (Sleepytime / 1000)]),
   sleep(Sleepytime),
 
-  Left_Request = spawn_link(fun() -> chopstick:request(Left, self(), ?TIMEOUT_LEFT) end),
-  Right_Request = spawn_link(fun() -> chopstick:request(Right, self(), ?TIMEOUT_RIGHT) end),
-
-  receive
-    {ok, _} ->
-      receive
-        {ok, _} ->
-          eat(?EAT_TIME, Left, Right),
-          sleeping(Hungry - 1, Left, Right, Name, Ctrl);
-        {no, Left_Request} ->
-          chopstick:return(Right),
-          sleeping(Hungry, Left, Right, Name, Ctrl);
-        {no, Right_Request} ->
-          chopstick:return(Left),
-          sleeping(Hungry, Left, Right, Name, Ctrl)
-      end;
-    {no, _} ->
+  case chopstick:granted(Left, Right, self(), ?TIMEOUT) of
+    granted ->
+      eat(?EAT_TIME, Left, Right),
+      sleeping(Hungry - 1, Left, Right, Name, Ctrl);
+    not_granted ->
       sleeping(Hungry, Left, Right, Name, Ctrl)
   end.
+
 
 eat(T, Left, Right) ->
   timer:sleep(T),
