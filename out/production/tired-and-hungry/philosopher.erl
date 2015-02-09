@@ -28,8 +28,16 @@ sleeping(Hungry, Left, Right, Name, Ctrl) ->
       receive
         {ok, _} ->
           eat(?EAT_TIME, Left, Right),
-          sleeping(Hungry - 1, Left, Right, Name, Ctrl)
-      end
+          sleeping(Hungry - 1, Left, Right, Name, Ctrl);
+        {no, Left_Request} ->
+          chopstick:return(Right),
+          sleeping(Hungry, Left, Right, Name, Ctrl);
+        {no, Right_Request} ->
+          chopstick:return(Left),
+          sleeping(Hungry, Left, Right, Name, Ctrl)
+      end;
+    {no, _} ->
+      sleeping(Hungry, Left, Right, Name, Ctrl)
   end.
 
 eat(T, Left, Right) ->
@@ -41,4 +49,4 @@ sleep(Sleepytime) ->
   timer:sleep(Sleepytime).
 
 helloworld() ->
-  helloworlden.
+  helloworldenden.
