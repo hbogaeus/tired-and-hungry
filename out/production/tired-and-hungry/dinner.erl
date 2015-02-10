@@ -13,11 +13,11 @@ init() ->
   C4 = chopstick:start("C4"),
   C5 = chopstick:start("C5"),
   Ctrl = self(),
-  philosopher:start(3, C1, C2, "C1-C2", Ctrl), %Platon
-  philosopher:start(3, C2, C3, "C2-C3", Ctrl), %Nietzsche
-  philosopher:start(3, C3, C4, "C3-C4", Ctrl), %Kant
-  philosopher:start(3, C4, C5, "C4-C5", Ctrl), %Aristoteles
-  philosopher:start(3, C5, C1, "C5-C1", Ctrl), %Sokrates
+  philosopher:start(3, C1, C2, "Platon", Ctrl), %Platon
+  philosopher:start(3, C2, C3, "Nietzsche", Ctrl), %Nietzsche
+  philosopher:start(3, C3, C4, "Kant", Ctrl), %Kant
+  philosopher:start(3, C4, C5, "Arisotooteles", Ctrl), %Aristoteles
+  philosopher:start(3, C5, C1, "Sokrates", Ctrl), %Sokrates
   wait(5, [C1, C2, C3, C4, C5]).
 
 wait(0, Chopsticks) ->
