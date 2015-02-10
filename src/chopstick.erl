@@ -3,7 +3,7 @@
 
 -compile(debug_info).
 
--export([start/1, request/3, granted/4, return/1, quit/1]).
+-export([start/1, request/4, granted/4, return/1, quit/1]).
 
 start(Name) ->
   spawn_link(fun() -> available(Name) end).
@@ -27,19 +27,23 @@ gone(Name) ->
       ok
   end.
 
-request(Stick, From, Timeout) ->
-  Stick ! {request, self()},
+request(Left, Right, From, Timeout) ->
+  Left ! {request, self()},
+  Right ! {request, self()},
   receive
     granted ->
-      From ! {ok, Stick}
+      receive
+        granted ->
+          From ! granted
+      after Timeout ->
+        From ! not_granted
+      end
   after Timeout ->
-    From ! {no, Stick}
+    From ! not_granted
   end.
 
 granted(Left, Right, From, Timeout) ->
-  Self = self(),
-  spawn_link(fun() -> chopstick:request(Left, Self, Timeout) end),
-  spawn_link(fun() -> chopstick:request(Right, Self, Timeout) end),
+  request(Left, Right, self(), Timeout),
 
   receive
     {ok, _} ->
