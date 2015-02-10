@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e04f1a5-bf69-4009-8742-37b47015eaf2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tired-and-hungry/chopstick.beam" afterPath="$PROJECT_DIR$/out/production/tired-and-hungry/chopstick.beam" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tired-and-hungry/dinner.beam" afterPath="$PROJECT_DIR$/out/production/tired-and-hungry/dinner.beam" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tired-and-hungry/echo.beam" afterPath="$PROJECT_DIR$/out/production/tired-and-hungry/echo.beam" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tired-and-hungry/philosopher.beam" afterPath="$PROJECT_DIR$/out/production/tired-and-hungry/philosopher.beam" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tired-and-hungry/chopstick.erl" afterPath="$PROJECT_DIR$/out/production/tired-and-hungry/chopstick.erl" />
+    <list default="true" id="9e04f1a5-bf69-4009-8742-37b47015eaf2" name="Default" comment="Asynchronous requests maybe working with better timeouts and granted function!">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/chopstick.erl" afterPath="$PROJECT_DIR$/src/chopstick.erl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tired-and-hungry/dinner.erl" afterPath="$PROJECT_DIR$/out/production/tired-and-hungry/dinner.erl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dinner.erl" afterPath="$PROJECT_DIR$/src/dinner.erl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tired-and-hungry/philosopher.erl" afterPath="$PROJECT_DIR$/out/production/tired-and-hungry/philosopher.erl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/philosopher.erl" afterPath="$PROJECT_DIR$/src/philosopher.erl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -50,8 +43,8 @@
           <file leaf-file-name="chopstick.erl" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/chopstick.erl">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.73095626" vertical-offset="280" max-vertical-offset="918">
-                  <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+                <state vertical-scroll-proportion="1.0616622" vertical-offset="369" max-vertical-offset="1020">
+                  <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
@@ -60,8 +53,8 @@
           <file leaf-file-name="dinner.erl" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/dinner.erl">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="646">
-                  <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="646">
+                  <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
@@ -74,8 +67,8 @@
           <file leaf-file-name="philosopher.erl" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/philosopher.erl">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.50405186" vertical-offset="131" max-vertical-offset="748">
-                  <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+                <state vertical-scroll-proportion="0.60589814" vertical-offset="131" max-vertical-offset="748">
+                  <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
@@ -96,9 +89,9 @@
         <option value="$PROJECT_DIR$/src/echo.erl" />
         <option value="$PROJECT_DIR$/src/myring.erl" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/dinner.erl" />
         <option value="$PROJECT_DIR$/src/philosopher.erl" />
         <option value="$PROJECT_DIR$/src/chopstick.erl" />
-        <option value="$PROJECT_DIR$/src/dinner.erl" />
       </list>
     </option>
   </component>
@@ -429,7 +422,13 @@
       <option name="project" value="LOCAL" />
       <updated>1423564146541</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Asynchronous requests work!">
+      <created>1423570226603</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1423570226604</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -454,17 +453,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2266881" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3782946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32868218" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49302325" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27452415" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -472,14 +473,12 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3782946" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15813954" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
@@ -508,7 +507,8 @@
     <MESSAGE value="Asynchronous requests almost work" />
     <MESSAGE value="Asynchronous requests still almost work..." />
     <MESSAGE value="Asynchronous requests work!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Asynchronous requests work!" />
+    <MESSAGE value="Asynchronous requests maybe working with better timeouts and granted function!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Asynchronous requests maybe working with better timeouts and granted function!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -894,26 +894,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/philosopher.erl">
+    <entry file="file://$PROJECT_DIR$/src/dinner.erl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50405186" vertical-offset="131" max-vertical-offset="748">
-          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="646">
+          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dinner.erl">
+    <entry file="file://$PROJECT_DIR$/src/philosopher.erl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="646">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.60589814" vertical-offset="131" max-vertical-offset="748">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/chopstick.erl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73095626" vertical-offset="280" max-vertical-offset="918">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.0616622" vertical-offset="369" max-vertical-offset="1020">
+          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
           <folding />
         </state>
       </provider>
