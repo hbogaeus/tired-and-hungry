@@ -15,28 +15,33 @@ sleeping(0, _Left, _Right, Name, Ctrl) ->
   io:format("~s IS NO LONGER HUNGRY AND IS LEAVING!~n", [Name]),
   Ctrl ! done;
 sleeping(Hungry, Left, Right, Name, Ctrl) ->
-  Sleepytime = ?SLEEP_BASE + crypto:rand_uniform(0, ?SLEEP_MAX),
-  io:format("~s is sleeping for ~w sec!~n", [Name, (Sleepytime / 1000)]),
-  sleep(Sleepytime),
+  io:format("~s is sleeping!~n", [Name]),
+  Waiter = sleep(),
+  eat(Left, Right, Waiter),
 
-  case chopstick:granted(Left, Right, ?TIMEOUT) of
-    granted ->
-      %io:format("~s succeeded in getting the chopsticks!~n", [Name]),
-      eat(?EAT_TIME, Left, Right, Name),
-      sleeping(Hungry - 1, Left, Right, Name, Ctrl);
-    not_granted ->
-      %io:format("~s failed to get the chopsticks!~n", [Name]),
-      sleeping(Hungry, Left, Right, Name, Ctrl)
-  end.
+  sleeping(Hungry - 1, Left, Right, Name, Ctrl).
 
-eat(T, Left, Right, Name) ->
-  %io:format("~s is eating!~n", [Name]),
-  timer:sleep(T),
+eat(Left, Right, Waiter) ->
+  io:format("Eating with ~w and ~w ~n", [Left, Right]),
+  chopstick:request(Left, self()),
+  chopstick:request(Right, self()),
+  receive
+    {granted, _} ->
+      receive
+        {granted, _} ->
+          ok
+      end
+  end,
+  timer:sleep(?SLEEP_BASE),
+  Waiter ! done,
   chopstick:return(Left),
   chopstick:return(Right).
 
-sleep(Sleepytime) ->
-  timer:sleep(Sleepytime).
-
+sleep() ->
+  receive
+    {wake, Waiter} ->
+      io:format("Woke up! ~n"),
+      Waiter
+  end.
 
 % DROP A BOMB ON IT!

@@ -1,5 +1,5 @@
 -module(dinner).
--author("Henry").
+-author("Henry Bogaeus & Simon Carlson").
 
 -export([start/0]).
 
@@ -13,11 +13,12 @@ init() ->
   C4 = chopstick:start("C4"),
   C5 = chopstick:start("C5"),
   Ctrl = self(),
-  philosopher:start(3, C1, C2, "Platon", Ctrl), %Platon
-  philosopher:start(3, C2, C3, "Nietzsche", Ctrl), %Nietzsche
-  philosopher:start(3, C3, C4, "Kant", Ctrl), %Kant
-  philosopher:start(3, C4, C5, "Aristoteles", Ctrl), %Aristoteles
-  philosopher:start(3, C5, C1, "Sokrates", Ctrl), %Sokrates
+  P1 = philosopher:start(3, C1, C2, "Platon", Ctrl), %Platon
+  P2 = philosopher:start(3, C2, C3, "Nietzsche", Ctrl), %Nietzsche
+  P3 = philosopher:start(3, C3, C4, "Kant", Ctrl), %Kant
+  P4 = philosopher:start(3, C4, C5, "Aristoteles", Ctrl), %Aristoteles
+  P5 = philosopher:start(3, C5, C1, "Sokrates", Ctrl), %Sokrates
+  waiter:start({P1, P2, P3, P4, P5}),
   wait(5, [C1, C2, C3, C4, C5]).
 
 wait(0, Chopsticks) ->
