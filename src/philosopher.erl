@@ -21,14 +21,14 @@ sleeping(Hungry, Left, Right, Name, Ctrl) ->
 
   case chopstick:granted(Left, Right, self(), ?TIMEOUT) of
     granted ->
-      eat(?EAT_TIME, Left, Right),
+      eat(?EAT_TIME, Left, Right, Name),
       sleeping(Hungry - 1, Left, Right, Name, Ctrl);
     not_granted ->
       sleeping(Hungry, Left, Right, Name, Ctrl)
   end.
 
-
-eat(T, Left, Right) ->
+eat(T, Left, Right, Name) ->
+  io:format("~s is eating!~n", [Name]),
   timer:sleep(T),
   chopstick:return(Left),
   chopstick:return(Right).
