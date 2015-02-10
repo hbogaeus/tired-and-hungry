@@ -37,3 +37,6 @@ eat(T, Left, Right, Name) ->
 
 sleep(Sleepytime) ->
   timer:sleep(Sleepytime).
+
+
+% DROP A BOMB ON IT!
