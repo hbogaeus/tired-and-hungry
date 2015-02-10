@@ -3,43 +3,51 @@
 
 -compile(debug_info).
 
--export([start/1, request/4, return/1, quit/1]).
+-export([start/1, granted/3, request/2, return/1, quit/1]).
 
 start(Name) ->
   spawn_link(fun() -> available(Name) end).
 
 available(Name) ->
-  %io:format("~s is available!~n", [Name]),
+  io:format("~s is available!~n", [Name]),
   receive
     {request, From} ->
-      From ! granted,
+      From ! {granted, self()},
       gone(Name);
     quit ->
       ok
   end.
 
 gone(Name) ->
-  %io:format("~s is gone!~n", [Name]),
+  io:format("~s is gone!~n", [Name]),
   receive
     return ->
       available(Name);
     quit ->
-      ok
+      ok;
+    {request, _From} ->
+      gone(Name)
   end.
 
-request(Left, Right, From, Timeout) ->
-  Left ! {request, self()},
-  Right ! {request, self()},
+request(Stick, From) ->
+  Stick ! {request, From}.
+
+granted(Left, Right, Timeout) ->
+  Self = self(),
+  request(Left, Self),
+  request(Right, Self),
+
   receive
-    granted ->
+    {granted, StickID1} ->
       receive
-        granted ->
-          From ! granted
-      after Timeout ->
-        From ! not_granted
+        {granted, _StickID2} ->
+          granted
+        after Timeout ->
+          return(StickID1),
+          not_granted
       end
   after Timeout ->
-    From ! not_granted
+    not_granted
   end.
 
 return(Stick) ->

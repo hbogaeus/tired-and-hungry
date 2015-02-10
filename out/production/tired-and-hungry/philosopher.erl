@@ -1,5 +1,5 @@
 -module(philosopher).
--author("Henry").
+-author("Henry Bogaeus").
 
 -define(SLEEP_BASE, 1000).
 -define(SLEEP_MAX, 10000).
@@ -19,13 +19,13 @@ sleeping(Hungry, Left, Right, Name, Ctrl) ->
   io:format("~s is sleeping for ~w sec!~n", [Name, (Sleepytime / 1000)]),
   sleep(Sleepytime),
 
-  case chopstick:request(Left, Right, self(), ?TIMEOUT) of
+  case chopstick:granted(Left, Right, ?TIMEOUT) of
     granted ->
-      io:format("~s succeeded in getting the chopstick!~n", [Name]),
+      %io:format("~s succeeded in getting the chopsticks!~n", [Name]),
       eat(?EAT_TIME, Left, Right, Name),
       sleeping(Hungry - 1, Left, Right, Name, Ctrl);
     not_granted ->
-      io:format("~s failed to get the chopsticks!~n", [Name]),
+      %io:format("~s failed to get the chopsticks!~n", [Name]),
       sleeping(Hungry, Left, Right, Name, Ctrl)
   end.
 

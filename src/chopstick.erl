@@ -9,7 +9,7 @@ start(Name) ->
   spawn_link(fun() -> available(Name) end).
 
 available(Name) ->
-  %io:format("~s is available!~n", [Name]),
+  io:format("~s is available!~n", [Name]),
   receive
     {request, From} ->
       From ! {granted, self()},
@@ -19,12 +19,14 @@ available(Name) ->
   end.
 
 gone(Name) ->
-  %io:format("~s is gone!~n", [Name]),
+  io:format("~s is gone!~n", [Name]),
   receive
     return ->
       available(Name);
     quit ->
-      ok
+      ok;
+    {request, _From} ->
+      gone(Name)
   end.
 
 request(Stick, From) ->

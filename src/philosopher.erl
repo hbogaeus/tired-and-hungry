@@ -21,11 +21,11 @@ sleeping(Hungry, Left, Right, Name, Ctrl) ->
 
   case chopstick:granted(Left, Right, ?TIMEOUT) of
     granted ->
-      io:format("~s succeeded in getting the chopstick!~n", [Name]),
+      %io:format("~s succeeded in getting the chopsticks!~n", [Name]),
       eat(?EAT_TIME, Left, Right, Name),
       sleeping(Hungry - 1, Left, Right, Name, Ctrl);
     not_granted ->
-      io:format("~s failed to get the chopsticks!~n", [Name]),
+      %io:format("~s failed to get the chopsticks!~n", [Name]),
       sleeping(Hungry, Left, Right, Name, Ctrl)
   end.
 
