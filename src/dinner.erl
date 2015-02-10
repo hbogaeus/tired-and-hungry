@@ -1,5 +1,5 @@
 -module(dinner).
--author("Henry").
+-author("Henry Bogaeus & Simon Carlson").
 
 -export([start/0]).
 

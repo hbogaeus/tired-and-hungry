@@ -1,5 +1,5 @@
 -module(chopstick).
--author("Henry").
+-author("Henry Bogaeus & Simon Carlson").
 
 -compile(debug_info).
 

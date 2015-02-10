@@ -1,5 +1,5 @@
 -module(philosopher).
--author("Henry Bogaeus").
+-author("Henry Bogaeus & Simon Carlson").
 
 -define(SLEEP_BASE, 1000).
 -define(SLEEP_MAX, 10000).
